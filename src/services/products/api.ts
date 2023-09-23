@@ -10,7 +10,7 @@ export default {
   listProducts(): Promise<AxiosResponse> {
     return client('/products')
   },
-  getProduct(id: string | number): Promise<AxiosResponse> {
+  getProduct(id: number): Promise<AxiosResponse> {
     return client(`/products/${ id }`)
   },
 }
