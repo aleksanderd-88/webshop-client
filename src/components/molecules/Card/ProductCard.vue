@@ -45,7 +45,7 @@ defineProps({
 
 <style lang="scss" scoped>
   .product-card {
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -53,11 +53,13 @@ defineProps({
     gap: 2rem;
     flex: 0 0 100%;
     max-width: 300px;
+    border-radius: 3px;
 
     &__image {
       width: 100%;
       height: 300px;
       object-fit: cover;
+      border-radius: 3px;
     }
 
     &__specifications {
