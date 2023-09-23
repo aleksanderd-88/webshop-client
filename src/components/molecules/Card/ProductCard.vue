@@ -90,9 +90,5 @@ defineProps({
       align-items: center;
       gap: 1rem;
     }
-
-    &__action-btn {
-
-    }
   }
 </style>
