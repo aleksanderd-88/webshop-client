@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import ProductList from '@/components/molecules/Product/ProductList.vue'
+import ProductList from '@/components/molecules/List/ProductList.vue'
 
 </script>
 
