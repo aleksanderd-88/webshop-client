@@ -7,8 +7,8 @@ const client = axios.create({
 })
 
 export default {
-  listProducts(): Promise<AxiosResponse> {
-    return client('/products')
+  listProducts(offset = 0, limit = 10): Promise<AxiosResponse> {
+    return client(`/products?offset=${ offset }&limit=${ limit }`)
   },
   getProduct(id: number): Promise<AxiosResponse> {
     return client(`/products/${ id }`)
