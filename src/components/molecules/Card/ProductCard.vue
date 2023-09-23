@@ -90,5 +90,21 @@ defineProps({
       align-items: center;
       gap: 1rem;
     }
+
+    &__action-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color .1s ease;
+
+      @media (min-width: 1024px) {
+        &:hover {
+          background-color: rgba(#999, .1);
+        }
+      }
+    }
   }
 </style>
