@@ -3,6 +3,7 @@
     type="button" 
     class="product-card"
     :class="modifiedClass"
+    ref="target"
   >
     <div 
       class="product-card__content" 
@@ -21,15 +22,15 @@
       </section>
 
       <section class="product-card__actions">
-        <button type="button" class="product-card__action-btn">
+        <button type="button" class="product-card__action-btn" @click.stop>
           <BaseIcon>favorite</BaseIcon>
         </button>
 
-        <button type="button" class="product-card__action-btn">
+        <button type="button" class="product-card__action-btn" @click.stop>
           <BaseIcon>compare_arrows</BaseIcon>
         </button>
 
-        <button type="button" class="product-card__action-btn">
+        <button type="button" class="product-card__action-btn" @click.stop>
           <BaseIcon>visibility</BaseIcon>
         </button>
       </section>
@@ -51,6 +52,7 @@ import BaseIcon from '../../atoms/Base/BaseIcon.vue';
 import get from 'lodash/get'
 import type { SingleProductType } from '@/stores/products/types';
 import { type PropType, ref, computed } from 'vue';
+import { onClickOutside } from '@vueuse/core'
 
 defineProps({
   product: {
@@ -61,12 +63,16 @@ defineProps({
 })
 
 const menuVisible = ref(false)
+const target = ref()
 
 const onCardClick = () => {
   menuVisible.value = !menuVisible.value
 }
 
+
 const modifiedClass = computed(() => menuVisible.value && 'product-card--menu-visible')
+
+onClickOutside(target, () => menuVisible.value = false)
 </script>
 
 <style lang="scss" scoped>
@@ -169,18 +175,16 @@ const modifiedClass = computed(() => menuVisible.value && 'product-card--menu-vi
       transition: visibility .2s, opacity .2s ease;  
     }
 
-    @media (max-width: 1024px) {
-      &--menu-visible {
-        #{$root}__menu {
-          opacity: 1;
-          visibility: visible;
-          transform: translate(-50%, 0);
-        }
-        
-        #{$root}__add-btn {
-          opacity: 1;
-          visibility: visible;
-        }
+    &--menu-visible {
+      #{$root}__menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+      }
+      
+      #{$root}__add-btn {
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
